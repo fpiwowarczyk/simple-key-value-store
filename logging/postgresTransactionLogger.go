@@ -13,10 +13,10 @@ type PostgresTransactionLogger struct {
 }
 
 type PostgresDBParams struct {
-	dbName   string
-	host     string
-	user     string
-	password string
+	DBName   string
+	Host     string
+	User     string
+	Password string
 }
 
 func (l *PostgresTransactionLogger) WritePut(key, value string) {
@@ -105,7 +105,7 @@ func (l *PostgresTransactionLogger) ReadEvents() (<-chan Event, <-chan error) {
 func NewPostgresTransactionLogger(config PostgresDBParams) (TransactionLogger, error) {
 
 	connStr := fmt.Sprintf("host=%s dbname=%s user=%s password=%s",
-		config.host, config.dbName, config.user, config.password)
+		config.Host, config.DBName, config.User, config.Password)
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
