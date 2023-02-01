@@ -12,11 +12,11 @@ var store = struct {
 
 var ErrorNoSuchKey = errors.New("no such key")
 
-func Put(key, value string) error {
+func Put(key, value string, message string) error {
 	store.Lock()
 	store.m[key] = value
 	store.Unlock()
-
+	fmt.Printf("%s",message)
 	return nil
 }
 
